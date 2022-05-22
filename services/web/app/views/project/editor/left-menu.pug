@@ -48,20 +48,6 @@ aside#left-menu.full-size(
 					show="show"
 				)
 
-//                       != moduleIncludes("editorLeftMenu:actions", locals)
-//                       li(ng-controller="WordCountModalController")
-//                               a(href, ng-if="pdf.url", ng-click="openWordCountModal()")
-//                                       i.fa.fa-fw.fa-eye
-//                                       span &nbsp;&nbsp; #{translate("word_count")}
-//                               a.link-disabled(href, ng-if="!pdf.url", tooltip=translate('please_compile_pdf_before_word_count'))
-//                                       i.fa.fa-fw.fa-eye
-//                                       span.link-disabled &nbsp;&nbsp; #{translate("word_count")}
- 
-//                               word-count-modal(
-//                                       handle-hide="handleHide"
-//                                       show="show"
-//                               )
-
 
 	if (moduleIncludesAvailable("editorLeftMenu:sync"))
 		div(ng-show="!anonymous")
@@ -77,16 +63,6 @@ aside#left-menu.full-size(
 	form.settings(ng-controller="SettingsController", ng-show="!anonymous")
 		.containter-fluid
 			.form-controls(ng-show="permissions.write")
-//                               label(for="compiler") #{translate("compiler")}
-//                               select(
-//                                       name="compiler"
-//                                       ng-model="project.compiler"
-//                               )
-//                                       option(value='pdflatex') pdfLaTeX
-//                                       option(value='latex') LaTeX
-//                                       option(value='xelatex') XeLaTeX
-//                                       option(value='lualatex') LuaLaTeX
-
 			if (typeof(allowedImageNames) !== 'undefined' && allowedImageNames.length > 0)
 				.form-controls(ng-show="permissions.write")
 					label(for="imageName") #{translate("tex_live_version")}
