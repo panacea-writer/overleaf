@@ -46,8 +46,10 @@ const OutlinePane = React.memo(function OutlinePane({
     }
   }
 
-//  return (
-//    <div className={headerClasses}>
+  return (
+    <div className={headerClasses}>
+    </div>
+  )
 //      <header className="outline-header">
 //        <button
 //          className="outline-header-expand-collapse-btn"
@@ -73,8 +75,6 @@ const OutlinePane = React.memo(function OutlinePane({
 //      ) : null}
 //    </div>
 //  )
-
-  return ()
 })
 
 OutlinePane.propTypes = {
