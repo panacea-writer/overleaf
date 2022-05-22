@@ -66,7 +66,7 @@ module.exports = LatexRunner = {
 
     // We want to run latexmk on the tex file which we will automatically
     // generate from the Rtex/Rmd/md file.
-    mainFile = mainFile.replace(/\.(Rtex|md|Rmd)$/, '.tex')
+    // mainFile = mainFile.replace(/\.(Rtex|md|Rmd)$/, '.tex')
 
     if (compiler === 'pdflatex') {
       command = LatexRunner._pdflatexCommand(mainFile, flags)
