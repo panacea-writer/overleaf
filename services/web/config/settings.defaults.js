@@ -654,7 +654,7 @@ module.exports = {
     parseTextExtensions(process.env.ADDITIONAL_TEXT_EXTENSIONS)
   ),
 
-  validRootDocExtensions: ['tex', 'Rtex', 'ltx'],
+  validRootDocExtensions: ['md', 'markdown', 'Rmd'],
 
   emailConfirmationDisabled:
     process.env.EMAIL_CONFIRMATION_DISABLED === 'true' || false,

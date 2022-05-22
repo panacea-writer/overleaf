@@ -7,7 +7,7 @@ function PdfLogsPaneInfoNotice() {
 
   const [dismissed, setDismissed] = usePersistedState(
     'logs_pane.dismissed_info_notice',
-    false
+    true
   )
 
   if (dismissed) {

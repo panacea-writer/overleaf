@@ -68,7 +68,7 @@ async function createProjectFromSnippet(ownerId, projectName, docLines) {
 async function createBasicProject(ownerId, projectName) {
   const project = await _createBlankProject(ownerId, projectName)
 
-  const docLines = await _buildTemplate('mainbasic.tex', ownerId, projectName)
+  const docLines = await _buildTemplate('mainbasic.md', ownerId, projectName)
   await _createRootDoc(project, ownerId, docLines)
 
   AnalyticsManager.recordEventForUser(ownerId, 'project-created', {
@@ -92,33 +92,47 @@ async function createExampleProject(ownerId, projectName) {
 
 async function _addExampleProjectFiles(ownerId, projectName, project) {
   const mainDocLines = await _buildTemplate(
-    'example-project/main.tex',
+    'example-project/main.md',
     ownerId,
     projectName
   )
   await _createRootDoc(project, ownerId, mainDocLines)
 
   const bibDocLines = await _buildTemplate(
-    'example-project/sample.bib',
+    'example-project/references.bib',
     ownerId,
     projectName
   )
   await ProjectEntityUpdateHandler.promises.addDoc(
     project._id,
     project.rootFolder[0]._id,
-    'sample.bib',
+    'references.bib',
     bibDocLines,
+    ownerId
+  )
+
+  const yamlDocLines = await _buildTemplate(
+    'example-project/panacea.yaml',
+    ownerId,
+    projectName
+  )
+
+  await ProjectEntityUpdateHandler.promises.addDoc(
+    project._id,
+    project.rootFolder[0]._id,
+    'panacea.yaml',
+    yamlDocLines,
     ownerId
   )
 
   const frogPath = path.join(
     __dirname,
-    '/../../../templates/project_files/example-project/frog.jpg'
+    '/../../../templates/project_files/example-project/butterfly.jpg'
   )
   await ProjectEntityUpdateHandler.promises.addFile(
     project._id,
     project.rootFolder[0]._id,
-    'frog.jpg',
+    'butterfly.jpg',
     frogPath,
     null,
     ownerId
@@ -171,7 +185,7 @@ async function _createRootDoc(project, ownerId, docLines) {
     const { doc } = await ProjectEntityUpdateHandler.promises.addDoc(
       project._id,
       project.rootFolder[0]._id,
-      'main.tex',
+      'main.md',
       docLines,
       ownerId
     )

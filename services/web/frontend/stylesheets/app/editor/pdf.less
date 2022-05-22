@@ -396,6 +396,7 @@
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    visibility: hidden;  // won't work with markdown so hide
   }
 
   > .synctex-spin-icon {
@@ -404,12 +405,14 @@
 }
 
 .synctex-control-goto-pdf > .synctex-control-icon {
+  visibility: hidden;  // won't work with markdown so hide
   text-indent: 1px; // "Optical" adjustment.
   &::before {
     content: '\f061';
   }
 }
 .synctex-control-goto-code > .synctex-control-icon {
+  visibility: hidden;  // won't work with markdown so hide
   text-indent: -1px; // "Optical" adjustment.
   &::before {
     content: '\f060';

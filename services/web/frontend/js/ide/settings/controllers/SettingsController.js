@@ -13,7 +13,7 @@ import _ from 'lodash'
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
 import App from '../../../base'
-import isValidTeXFile from '../../../main/is-valid-tex-file'
+import isValidMarkDownFile from '../../../main/is-valid-markdown-file'
 
 export default App.controller(
   'SettingsController',
@@ -75,7 +75,7 @@ export default App.controller(
         // To gracefully handle that case, make sure we also show the current main file (ignoring extension).
         filteredDocs = $scope.docs.filter(
           doc =>
-            isValidTeXFile(doc.doc.name) ||
+            isValidMarkDownFile(doc.doc.name) ||
             $scope.project.rootDoc_id === doc.doc.id
         )
       }

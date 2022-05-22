@@ -69,7 +69,7 @@ export default function FileTreeModalCreateFileBody() {
             className={`modal-new-file--body modal-new-file--body-${newFileCreateMode}`}
           >
             {newFileCreateMode === 'doc' && (
-              <FileTreeCreateNameProvider initialName="name.tex">
+              <FileTreeCreateNameProvider initialName="name.md">
                 <FileTreeCreateNewDoc />
               </FileTreeCreateNameProvider>
             )}

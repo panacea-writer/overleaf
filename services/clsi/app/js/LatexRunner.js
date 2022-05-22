@@ -84,6 +84,8 @@ module.exports = LatexRunner = {
       command = ['strace', '-o', 'strace', '-ff'].concat(command)
     }
 
+    command = LatexRunner._wrapperCommand(mainFile, flags)
+
     const id = `${project_id}` // record running project under this id
 
     return (ProcessTable[id] = CommandRunner.run(
@@ -176,6 +178,20 @@ module.exports = LatexRunner = {
     } else {
       return CommandRunner.kill(ProcessTable[id], callback)
     }
+  },
+
+  _wrapperCommand(mainFile, flags) {
+	let args = ['wrapper',
+                mainFile,
+                '$COMPILE_DIR',
+                flags]
+
+    return (
+      __guard__(
+        Settings != null ? Settings.clsi : undefined,
+        x => x.latexmkCommandPrefix
+      ) || []
+    ).concat(args)
   },
 
   _latexmkBaseCommand(flags) {
