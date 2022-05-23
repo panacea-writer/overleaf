@@ -125,6 +125,20 @@ async function _addExampleProjectFiles(ownerId, projectName, project) {
     ownerId
   )
 
+  const templateDocLines = await _buildTemplate(
+    'example-project/cool.latex',
+    ownerId,
+    projectName
+  )
+
+  await ProjectEntityUpdateHandler.promises.addDoc(
+    project._id,
+    project.rootFolder[0]._id,
+    'cool.latex',
+    templateDocLines,
+    ownerId
+  )
+
   const frogPath = path.join(
     __dirname,
     '/../../../templates/project_files/example-project/butterfly.jpg'
